@@ -1,0 +1,11 @@
+pytesseract
+pdf2image
+PyMuPDF
+transformers
+accelerate
+pillow
+requests
+python-dotenv
+fastapi
+torch
+scipy
