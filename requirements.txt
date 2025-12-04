@@ -6,6 +6,10 @@ accelerate
 pillow
 requests
 python-dotenv
+google-genai
 fastapi
 torch
 scipy
+uvicorn
+python-multipart
+opencv-python
