@@ -31,18 +31,24 @@ def extract_text_native(pdf_path: str) -> str:
 def extract_text_ocr(path: str) -> str:
     ext = os.path.splitext(path)[1].lower()
     text = ""
+    custom_config = r"-l khm+eng --oem 3 --psm 6"
 
     try:
         if ext == ".pdf":
             images = convert_from_path(path, dpi=300)
             for img in images:
                 processed = preprocess(img)
-                text += pytesseract.image_to_string(processed, lang="khm") + "\n"
+                text += pytesseract.image_to_string(
+                    processed, config=custom_config
+                ).split("\n")
 
         elif ext in [".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".webp"]:
-            img = Image.open(path)
+            print("trigger in .jpg")
+            img = cv2.imread(path)
             processed = preprocess(img)
-            text = pytesseract.image_to_string(processed, lang="khm")
+            text = pytesseract.image_to_string(processed, config=custom_config).split(
+                "\n"
+            )
 
         else:
             raise ValueError(f"Unsupported file type: {ext}")
@@ -50,7 +56,7 @@ def extract_text_ocr(path: str) -> str:
     except Exception as e:
         print(f"Error occurred while extracting text: {e}")
 
-    return text.strip()
+    return text
 
 
 def extract_text(pdf_path: str) -> str:

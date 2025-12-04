@@ -4,7 +4,7 @@ import tempfile
 
 import requests
 
-from services.extractor.extractor import extract_text, extract_text_ocr
+from services.extractor.extractor import extract_text_ocr
 from utils.gemini_client import text_cleanup
 
 
@@ -32,5 +32,5 @@ def process_file(file: str):
         return
     cleanup = text_cleanup(text)
 
-    print("Extracted text:", cleanup)
+    # print("Extracted text:", text)
     return cleanup
