@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document to Speech</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero">
+            <h1>Document&nbsp;→ Speech</h1>
+            <p>Upload a PDF or image and we will extract the text, clean it up, and synthesize Khmer speech using the existing processing pipeline.</p>
+        </section>
+
+        <section class="card">
+            <form id="docForm" class="upload-form">
+                <label for="fileInput" class="input-label">Choose a PDF or image file</label>
+                <input type="file" id="fileInput" name="file" accept=".pdf,image/*" required />
+                <button type="submit">Process Document</button>
+            </form>
+            <p id="status" class="status">Waiting for a file…</p>
+        </section>
+
+        <section class="card results">
+            <div class="section-header">
+                <h2>Cleaned Text</h2>
+                <span id="charCount" class="char-count" hidden></span>
+            </div>
+            <pre id="responseText" class="response" aria-live="polite">No document processed yet.</pre>
+        </section>
+
+        <section class="card audio" id="audioWrapper" hidden>
+            <div class="section-header">
+                <h2>Generated Audio</h2>
+                <a id="downloadLink" href="#" download hidden>Download audio</a>
+            </div>
+            <audio id="audioPlayer" controls></audio>
+        </section>
+    </main>
+
+    <script src="/static/main.js" defer></script>
+</body>
+</html>

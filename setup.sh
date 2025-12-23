@@ -13,3 +13,5 @@ pip install --upgrade pip
 pip install -r requirements.txt
 
 echo "✅ Setup complete. Virtual environment is active."
+
+source venv/bin/activate
