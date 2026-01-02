@@ -158,7 +158,6 @@ def convert_to_wav(audio_data: bytes, mime_type: str) -> bytes:
 
 
 def parse_audio_mime_type(mime_type: str) -> Dict[str, Optional[int]]:
-    """Extract rate and bit depth from a MIME type string, if present."""
     bits_per_sample: Optional[int] = None
     rate: Optional[int] = None
 
